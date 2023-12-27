@@ -30,7 +30,7 @@ def generic_insert(insert_keys, table, db = "petljakdb_devel"):
         query = f"INSERT INTO {table}({colkeys}) VALUES ({colvals})"
         print(f"Performing operation:\n{query};")
         cursor.execute(query)
-        cursor.commit()
+        connection.commit()
         ## Now get the result of what we just inserted
         result = petljakapi.select.simple_select(db = db, table = table, filter_column = "rname", filter_value = rname)
     return(result)
