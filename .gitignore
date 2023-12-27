@@ -1,0 +1,5 @@
+.gitignore
+data_imports/
+slurm-*
+mysql/
+api/src/petljakapi/__pycache__/
