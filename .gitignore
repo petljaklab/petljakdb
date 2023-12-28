@@ -1,7 +1,7 @@
-.gitignore
 data_imports/
 slurm-*
 mysql/
 api/src/petljakapi/__pycache__/
 api/src/petljakapi.egg-info/
 api/build/
+dumps/
