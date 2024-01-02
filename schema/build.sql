@@ -59,4 +59,19 @@ CREATE TABLE runs(
     FOREIGN KEY (study_id)
         REFERENCES studies(id)
 );
-
+CREATE TABLE analyses (
+    id INT unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    pipeline_name VARCHAR(20),
+    pipeline_version VARCHAR(20),
+    analysis_type VARCHAR(20),
+    input_table ENUM('studies', 'samples', 'runs') NOT NULL,
+    studies_id INT unsigned,
+    samples_id INT unsigned,
+    runs_id INT unsigned,
+    analysis_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    analysis_dir VARCHAR(250),
+    analysis_complete ENUM('False', 'True') DEFAULT 'False',
+    FOREIGN KEY (studies_id) REFERENCES studies(id),
+    FOREIGN KEY (samples_id) REFERENCES samples(id),
+    FOREIGN KEY (runs_id) REFERENCES runs(id)
+);

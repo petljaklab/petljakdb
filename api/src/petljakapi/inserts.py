@@ -34,3 +34,33 @@ def generic_insert(insert_keys, table, db = "petljakdb_devel"):
         ## Now get the result of what we just inserted
         result = petljakapi.select.simple_select(db = db, table = table, filter_column = "rname", filter_value = rname)
     return(result)
+
+def analysis_insert(insert_keys, table, db = "petljakdb_devel"):
+    ## Initialize
+    cursor = connection.cursor(buffered = True)
+    petljakapi.dbs.chdb(db, cursor)
+    ## Check types
+    if not isinstance(insert_keys, dict):
+        raise(TypeError("insert_keys must be a dict"))
+    ## unpack rname
+    ## Check if what we're inserting already exists
+    result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"]})
+    ## If not, then do the insert
+    if result:
+        print(f"Row with pipeline name {insert_keys['pipeline_name']} and version {insert_keys['pipeline_version']} already exists. Skipping this add.")
+    else:
+        ## Create the colnames/values strings
+        ## Need to keep things sorted so we do it this way
+        ## Convert everything to a string, things that were strings before get quoted to play nice with mySQL
+        colkeys = list(insert_keys.keys())
+        colvals = [str(q(insert_keys[k])) for k in colkeys]
+        colkeys = ", ".join(colkeys)
+        colvals = ", ".join(colvals)
+        ## Create the query and add the line
+        query = f"INSERT INTO {table}({colkeys}) VALUES ({colvals})"
+        print(f"Performing operation:\n{query};")
+        cursor.execute(query)
+        connection.commit()
+        ## Now get the result of what we just inserted
+        result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"]})
+    return(result)
