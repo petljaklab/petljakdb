@@ -68,10 +68,12 @@ CREATE TABLE analyses (
     studies_id INT unsigned,
     samples_id INT unsigned,
     runs_id INT unsigned,
+    cells_id INT unsigned,
     analysis_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     analysis_dir VARCHAR(250),
     analysis_complete ENUM('False', 'True') DEFAULT 'False',
     FOREIGN KEY (studies_id) REFERENCES studies(id),
     FOREIGN KEY (samples_id) REFERENCES samples(id),
-    FOREIGN KEY (runs_id) REFERENCES runs(id)
+    FOREIGN KEY (runs_id) REFERENCES runs(id),
+    FOREIGN KEY (cells_id) REFERENCES cells(id)
 );

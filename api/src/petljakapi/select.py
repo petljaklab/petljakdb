@@ -36,7 +36,7 @@ def multi_select(db, table, filters):
     result = cursor.fetchall()
     return(result)
 
-def parent_ids(in_id, id_dict = {"studies":None, "samples":None, "runs":None}, db = "petljakdb_devel"):
+def parent_ids(in_id, db = "petljakdb_devel"):
     ## Prefix determines the database table for the ID
     prefix = in_id[:3]
     if prefix == "MPS":
@@ -45,8 +45,12 @@ def parent_ids(in_id, id_dict = {"studies":None, "samples":None, "runs":None}, d
         idtype = "runs"
     elif prefix == "MPP":
         idtype = "studies"
-    print(prefix)
+    #print(id_dict)
+    #print(prefix)
+    #print(idtype)
+    id_dict = {"studies":None, "samples":None, "runs":None}
     id_dict[idtype] = in_id
+    #print(id_dict)
     ## End recursiveness
     if idtype == "studies":
         return(id_dict)
