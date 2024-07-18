@@ -57,5 +57,5 @@ Path to all the mutation calls for JSC-1 cells, regardless of study:
 SELECT * FROM samples INNER JOIN analyses ON analyses.samples_id=samples.id WHERE pipeline_name="MUTECT_CELLLINE" AND cell_id=(SELECT id FROM cells WHERE rname="JSC-1");
 ```
 
-There are a lot of arcane things you can do with SQL to do increasingly complex queries. See mySQL/SQL documentation for more information.
+There are a lot of arcane things you can do with SQL to do increasingly complex queries. See [mySQL/SQL/mariaDB](https://www.javatpoint.com/mariadb-syntax) documentation for more information.
 
