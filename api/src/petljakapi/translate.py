@@ -1,5 +1,5 @@
 def idtostring(id, prefix):
-    string = prefix + format(id, "06d")
+    string = prefix + format(int(id), "06d")
     return(string)
 
 def stringtoid(string):

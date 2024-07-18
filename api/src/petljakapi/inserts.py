@@ -1,4 +1,5 @@
-from petljakapi import connection, q
+from petljakapi import q
+from petljakapi.connection import connection
 import petljakapi.dbs
 import petljakapi.select
 
@@ -11,13 +12,12 @@ def generic_insert(insert_keys, table, db = "petljakdb_devel"):
         raise(TypeError("insert_keys must be a dict"))
     if "rname" not in insert_keys.keys():
         raise(ValueError("rname must be a key in insert_keys"))
-    ## unpack rname
-    rname = insert_keys["rname"]
     ## Check if what we're inserting already exists
     result = petljakapi.select.multi_select(db = db, table = table, filters = insert_keys)
     ## If not, then do the insert
     if result:
-        print(f"Value {rname} in column rname already exists. Skipping this add.")
+        pass
+        #print(f"Values {insert_keys} in table {table} exists. Skipping this add.")
     else:
         ## Create the colnames/values strings
         ## Need to keep things sorted so we do it this way
@@ -56,7 +56,8 @@ def analysis_insert(insert_keys, table, db = "petljakdb_devel"):
     result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"], tbl:tbl_id})
     ## If not, then do the insert
     if result:
-        print(f"Row with pipeline name {insert_keys['pipeline_name']}, version {insert_keys['pipeline_version']} for {tbl} {tbl_id} already exists. Skipping this add.")
+        pass
+        #print(f"Row with pipeline name {insert_keys['pipeline_name']}, version {insert_keys['pipeline_version']} for {tbl} {tbl_id} already exists. Skipping this add.")
     else:
         ## Create the colnames/values strings
         ## Need to keep things sorted so we do it this way

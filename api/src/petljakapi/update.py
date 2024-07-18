@@ -1,4 +1,5 @@
-from petljakapi import connection, q
+from petljakapi import q
+from petljakapi.connection import connection
 import petljakapi.dbs
 
 def update(db, table, filters, update_col, update_val):
