@@ -22,7 +22,7 @@ Above you will find an [ERD](https://en.wikipedia.org/wiki/Entity%E2%80%93relati
 
 Note that the following must be done on BigPurple/Ultraviolet at NYULH. 
 
-The database can be queried via mySQL/mariaDB syntax. First you will need a DB account, created by Luka. Once that's set up, the easiest way to authenticate is to create a file `.my.cnf` in your home directory, structured accordingly, replace the text in {} with your own:
+The database can be queried via [mySQL/mariaDB syntax](https://www.javatpoint.com/mariadb-syntax). First you will need a DB account, created by Luka. Once that's set up, the easiest way to authenticate is to create a file `.my.cnf` in your home directory, structured accordingly, replace the text in {} with your own:
 
 ```
 [client]
