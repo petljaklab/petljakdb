@@ -22,7 +22,7 @@ Above you will find an [ERD](https://en.wikipedia.org/wiki/Entity%E2%80%93relati
 
 Note that the following must be done on BigPurple/Ultraviolet at NYULH. 
 
-The database can be queried via mySQL/mariaDB syntax. First you will need a DB account, created by Luka. Once that's set up, the easiest way to authenticate is to create a file `.my.cnf` in your home directory, structured accordingly, replace the text in {} with your own:
+The database can be queried via [mySQL/mariaDB syntax](https://www.javatpoint.com/mariadb-syntax). First you will need a DB account, created by Luka. Once that's set up, the easiest way to authenticate is to create a file `.my.cnf` in your home directory, structured accordingly, replace the text in {} with your own:
 
 ```
 [client]
@@ -57,5 +57,5 @@ Path to all the mutation calls for JSC-1 cells, regardless of study:
 SELECT * FROM samples INNER JOIN analyses ON analyses.samples_id=samples.id WHERE pipeline_name="MUTECT_CELLLINE" AND cell_id=(SELECT id FROM cells WHERE rname="JSC-1");
 ```
 
-There are a lot of arcane things you can do with SQL to do increasingly complex queries. See mySQL/SQL documentation for more information.
+There are a lot of arcane things you can do with SQL to do increasingly complex queries. See [mySQL/SQL/mariaDB](https://www.javatpoint.com/mariadb-syntax) documentation for more information.
 
