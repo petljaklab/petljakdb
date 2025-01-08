@@ -6,6 +6,7 @@ import petljakapi.translate
 
 def daughter_cells(id, db = "petljakdb_devel"):
     ## Initialize
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     ## Check if id is numeric, if so, use it, if not, try to convert

@@ -7,7 +7,7 @@ import time
 import sys
 
 def describe(db, table):
-    connection.reconnect(attempts=4, delay = 10)
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     query = f"DESCRIBE {table}"
@@ -19,7 +19,7 @@ def simple_select(db, table, filter_column, filter_value, headers = False, bench
     if bench:
         t1 = time.time()
     ## Initialize
-    connection.reconnect(attempts=4, delay = 10)
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     ## Sanitize filter_value
@@ -40,7 +40,7 @@ def simple_select(db, table, filter_column, filter_value, headers = False, bench
 def multi_select(db, table, filters, headers = False, bench = False):
     if bench:
         t1 = time.time()
-    connection.reconnect(attempts=4, delay = 10)
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     if not filters:
@@ -102,7 +102,7 @@ def parent_ids(in_id, db = "petljakdb_devel"):
 
 def select_join_2(db, tbl1, tbl1_fkey, tbl2, tbl2_fkey, tbl1_cols = None, tbl2_cols = None, filters = None, headers = False):
     ## Open connection and set db
-    connection.reconnect(attempts=4, delay = 10)
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     ## Handle table column selects

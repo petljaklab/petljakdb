@@ -53,7 +53,7 @@ def analysis_insert(insert_keys, table, db = "petljakdb_devel"):
         tbl = "studies_id"
         tbl_id = insert_keys["studies_id"]
     ## Check if what we're inserting already exists
-    result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"], tbl:tbl_id})
+    result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"], tbl:tbl_id, "reference_genome":insert_keys["reference_genome"]})
     ## If not, then do the insert
     if result:
         pass
@@ -72,5 +72,5 @@ def analysis_insert(insert_keys, table, db = "petljakdb_devel"):
         cursor.execute(query)
         connection.commit()
         ## Now get the result of what we just inserted
-        result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"], tbl:tbl_id})
+        result = petljakapi.select.multi_select(db = db, table = table, filters = {"pipeline_name":insert_keys["pipeline_name"], "pipeline_version":insert_keys["pipeline_version"], tbl:tbl_id, "reference_genome":insert_keys["reference_genome"]})
     return(result)

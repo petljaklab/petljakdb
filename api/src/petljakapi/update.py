@@ -3,6 +3,7 @@ from petljakapi.connection import connection
 import petljakapi.dbs
 
 def update(db, table, filters, update_col, update_val):
+    connection.reconnect(attempts=10, delay = 10)
     cursor = connection.cursor(buffered = True)
     petljakapi.dbs.chdb(db, cursor)
     filtlist = [f"`{k}`={q(v)}" for k, v in filters.items()]
