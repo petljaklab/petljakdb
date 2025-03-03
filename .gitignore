@@ -6,3 +6,5 @@ api/src/petljakapi.egg-info/
 api/build/
 dumps/
 mariadb*
+data_imports*
+.gitignore
